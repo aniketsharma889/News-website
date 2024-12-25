@@ -2,19 +2,40 @@ const express = require('express');
 const News = require('./models/newsModel');
 const connectDB = require('./db');
 const dotenv = require('dotenv');
+const cors = require('cors')
+
 const app = express();
 
 app.use(express.json());
 dotenv.config();
+app.use(cors());
 
 app.get('/api/news', async (req, res) => {
+    const { category, search } = req.query;
+  
     try {
-        const news = await News.find();
-        res.status(200).json(news);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
+      let news;
+      if (search) {
+        news = await News.find({
+          $or: [
+            { headline: { $regex: search, $options: "i" } },
+            { desc: { $regex: search, $options: "i" } },
+            { category: { $regex: search, $options: "i" } },
+            { author: { $regex: search, $options: "i" } },
+          ],
+        });
+      } else if (category) {
+        news = await News.find({ category: category.toLowerCase() });
+      } else {
+        news = await News.find();
+      }
+  
+      res.status(200).json(news);
+    } catch (error) {
+      console.error("Error fetching news:", error);
+      res.status(500).json({ message: "Internal server error" });
     }
-});
+  });
 
 app.get('/api/news/:id', async (req, res) => {
     try {

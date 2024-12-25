@@ -1,0 +1,14 @@
+/* Truncate text to a specific number of lines with vendor prefixes for compatibility */
+.truncated {
+    display: -webkit-box; /* Required for WebKit-based browsers */
+    -webkit-line-clamp: 3; /* Limit the number of lines (replace 2 with the desired line count) */
+    -webkit-box-orient: vertical; /* Set box orientation to vertical */
+    overflow: hidden; /* Hide the overflow content */
+    text-overflow: ellipsis; /* Show ellipsis ("...") for truncated text */
+  
+    /* For non-WebKit browsers (future standardization), we can add the line-clamp as part of the CSS specification */
+    line-clamp: 3; /* Standard property (may not work in all browsers yet) */
+    height: 4.5em; /* Adjust height as needed to control the number of lines */
+    line-height: 1.5em; /* Adjust line height for proper text fitting */
+  }
+  
