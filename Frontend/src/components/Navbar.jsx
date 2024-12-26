@@ -93,12 +93,6 @@ const Navbar = () => {
                 </li>
               </ul>
             </li>
-
-            <li className="nav-item">
-              <Link className="nav-link" to="/contact">
-                Contact Us
-              </Link>
-            </li>
           </ul>
 
           <form className="d-flex" onSubmit={handleSearch}>

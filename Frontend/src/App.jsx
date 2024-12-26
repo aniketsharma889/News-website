@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Category from "./components/Category";
-import Contact from "./components/Contact";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import NotFound from "./components/NotFound";
@@ -16,7 +15,6 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/category/:category" element={<Category />} /> 
-          <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="*" element={<NotFound />} />

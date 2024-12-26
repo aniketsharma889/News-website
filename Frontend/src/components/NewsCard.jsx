@@ -3,7 +3,7 @@ import './NewsCard.css';
 
 const NewsCard = ({ author, headline, desc, publishedAt, link, category, image }) => {
   return (
-    <div className="card mb-4 shadow-sm">
+    <div className="card mb-4 shadow-sm ">
       <img src={image} className="card-img-top" alt={headline} style={{ height: '300px', objectFit: 'cover' }}/>
 
       <div className="card-body">

@@ -6,8 +6,7 @@ const newsSchema = new mongoose.Schema({
     headline: {
         type: String,
         required: [true, 'Headline is required'],
-        minlength: [15, 'Headline should have at least 15 characters'],
-        maxlength: [90, 'Headline cannot exceed 90 characters'] 
+        minlength: [15, 'Headline should have at least 15 characters']
     },
 
     desc: {
