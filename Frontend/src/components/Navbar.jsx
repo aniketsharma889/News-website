@@ -1,15 +1,25 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {  logout } from "../features/userSlice";
 
 const Navbar = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { isLoggedIn } = useSelector((state) => state.user);
 
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchTerm) {
       navigate(`/search/${searchTerm}`);
     }
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/login");
   };
 
   return (
@@ -108,17 +118,28 @@ const Navbar = () => {
               Search
             </button>
           </form>
+
           <ul className="navbar-nav ms-3">
-            <li className="nav-item">
-              <Link className="nav-link" to="/login">
-                Login
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/signup">
-                Sign Up
-              </Link>
-            </li>
+            {!isLoggedIn ? (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/login">
+                    Login
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/signup">
+                    Sign Up
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <li className="nav-item">
+                <button className="btn btn-outline-danger" onClick={handleLogout}>
+                  Logout
+                </button>
+              </li>
+            )}
           </ul>
         </div>
       </div>
