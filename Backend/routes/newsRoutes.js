@@ -1,4 +1,3 @@
-// /routes/newsRoutes.js
 const express = require('express');
 const router = express.Router();
 const { getAllNews,getNewsById, createNews, updateNews, deleteNews } = require('../controllers/newsController');

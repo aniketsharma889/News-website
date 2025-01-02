@@ -1,14 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {  logout } from "../features/userSlice";
+import { logout } from "../features/userSlice";
 
 const Navbar = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { isLoggedIn } = useSelector((state) => state.user);
+  const { isLoggedIn} = useSelector((state) => state.user);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -134,11 +134,13 @@ const Navbar = () => {
                 </li>
               </>
             ) : (
-              <li className="nav-item">
-                <button className="btn btn-outline-danger" onClick={handleLogout}>
-                  Logout
-                </button>
-              </li>
+              <>
+                <li className="nav-item">
+                  <button className="btn btn-outline-danger" onClick={handleLogout}>
+                    Logout
+                  </button>
+                </li>
+              </>
             )}
           </ul>
         </div>

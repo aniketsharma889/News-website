@@ -12,14 +12,11 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Check if passwords match
     if (password !== confirmPassword) {
       setErrorMessage("Passwords do not match");
       return;
     }
 
-    // Prepare the request body
     const userData = {
       username,
       email,
@@ -27,7 +24,6 @@ const Signup = () => {
     };
 
     try {
-      // Make API call to register the user
       const response = await fetch("http://localhost:5000/signup", {
         method: "POST",
         headers: {
@@ -39,11 +35,9 @@ const Signup = () => {
       const data = await response.json();
 
       if (response.ok) {
-        // If registration is successful, show success message and redirect
         setSuccessMessage("Account created successfully. You can now log in.");
         setTimeout(() => navigate("/login"), 2000); // Redirect after 2 seconds
       } else {
-        // If registration fails, show the error message from the server
         setErrorMessage(data.message || "Registration failed. Please try again.");
       }
     } catch (error) {

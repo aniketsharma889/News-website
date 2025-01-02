@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
-import NewsCard from './NewsCard';  // Import the NewsCard component
-import axios from 'axios';  // If using axios for data fetching
+import NewsCard from './NewsCard'; 
+import axios from 'axios';  
 
 const Home = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);  // To handle any fetch errors
-
-  // Fetch news data from the backend
+  const [error, setError] = useState(null); 
   useEffect(() => {
     const fetchNews = async () => {
       setLoading(true);
@@ -16,10 +14,9 @@ const Home = () => {
       try {
         const response = await axios.get('http://localhost:5000/api/news');
 
-        console.log('Full Response:', response);  // Log the full response object
-        console.log('Response Data:', response.data);  // Log just the data
-        console.log('Response Data Type:', typeof response.data);  // Log the type of response data
-        
+        console.log('Full Response:', response);  
+        console.log('Response Data:', response.data);  
+        console.log('Response Data Type:', typeof response.data);  
         if (Array.isArray(response.data)) {
           setNews(response.data);
         } else {
@@ -35,15 +32,12 @@ const Home = () => {
   
     fetchNews();
   }, []);
-    // Empty dependency array to fetch only once on component mount
-
-  // Show loading or error message
   if (loading) {
-    return <div>Loading...</div>;  // Show loading message while fetching data
+    return <div>Loading...</div>;  
   }
 
   if (error) {
-    return <div>{error}</div>;  // Show error message if fetching fails
+    return <div>{error}</div>;  
   }
 
   return (
@@ -65,7 +59,7 @@ const Home = () => {
             </div>
           ))
         ) : (
-          <div>No news available at the moment.</div>  // In case there are no news items
+          <div>No news available at the moment.</div>  
         )}
       </div>
     </div>

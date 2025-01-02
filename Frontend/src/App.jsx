@@ -6,21 +6,30 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import NotFound from "./components/NotFound";
 import Search from "./components/Search";
-
+import ProtectedRoute from "./components/ProtectedRoute"; 
+import Footer from "./components/Footer";
 const App = () => {
   return (
     <Router>
       <Navbar />
       <div className="container mt-4">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/category/:category" element={<Category />} /> 
+          <Route path="/" element={<ProtectedRoute element={<Home />} />} />
+          <Route
+            path="/category/:category"
+            element={<ProtectedRoute element={<Category />} />}
+          />
+          <Route
+            path="/search/:term"
+            element={<ProtectedRoute element={<Search />} />}
+          />
+
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="/search/:term" element={<Search />} /> 
         </Routes>
       </div>
+      <Footer/>
     </Router>
   );
 };

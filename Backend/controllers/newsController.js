@@ -1,8 +1,5 @@
-
-// /controllers/newsController.js
 const News = require('../models/newsModel');
 
-// Fetch all news or filter by category or search term
 const getAllNews = async (req, res) => {
   const { category, search } = req.query;
 
@@ -30,7 +27,6 @@ const getAllNews = async (req, res) => {
   }
 };
 
-// Fetch a specific news item by its ID
 const getNewsById = async (req, res) => {
   try {
     const news = await News.findById(req.params.id);
@@ -44,7 +40,6 @@ const getNewsById = async (req, res) => {
   }
 };
 
-// Create a new news article
 const createNews = async (req, res) => {
   const { headline, desc, link, image, category, author } = req.body;
 
@@ -70,7 +65,6 @@ const createNews = async (req, res) => {
   }
 };
 
-// Update an existing news article
 const updateNews = async (req, res) => {
   try {
     const news = await News.findByIdAndUpdate(
@@ -90,7 +84,6 @@ const updateNews = async (req, res) => {
   }
 };
 
-// Delete a specific news article
 const deleteNews = async (req, res) => {
   try {
     const news = await News.findByIdAndDelete(req.params.id);
