@@ -106,17 +106,17 @@ const Navbar = () => {
           </ul>
 
           <form className="d-flex" onSubmit={handleSearch}>
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
+          <input
+    className="form-control me-2"
+    type="search"
+    placeholder="Search"
+    aria-label="Search"
+    value={searchTerm}
+    onChange={(e) => setSearchTerm(e.target.value)}
+  />
+  <button className="btn btn-outline-success" type="submit">
+    <i className="bi bi-search me-2"></i>
+  </button>
           </form>
 
           <ul className="navbar-nav ms-3">
@@ -134,13 +134,33 @@ const Navbar = () => {
                 </li>
               </>
             ) : (
-              <>
-                <li className="nav-item">
-                  <button className="btn btn-outline-danger" onClick={handleLogout}>
-                    Logout
+              <li className="nav-item dropdown">
+              <button
+                className="nav-link dropdown-toggle text-white"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                User Actions
+              </button>
+              <ul className="dropdown-menu dropdown-menu-end shadow-lg p-3" aria-labelledby="navbarDropdown">
+                <li>
+                  <button
+                    className="dropdown-item text-danger fw-bold"
+                    onClick={handleLogout}
+                  >
+                    <i className="bi bi-box-arrow-right me-2"></i>Logout
                   </button>
                 </li>
-              </>
+                <li>
+                  <Link className="dropdown-item text-success fw-bold" to="/add-news">
+                    <i className="bi bi-plus-circle me-2"></i>Add News
+                  </Link>
+                </li>
+              </ul>
+            </li>
+            
             )}
           </ul>
         </div>

@@ -8,6 +8,7 @@ import NotFound from "./components/NotFound";
 import Search from "./components/Search";
 import ProtectedRoute from "./components/ProtectedRoute"; 
 import Footer from "./components/Footer";
+import AddNewsPage from "./components/AddNewsPage";
 const App = () => {
   return (
     <Router>
@@ -23,7 +24,7 @@ const App = () => {
             path="/search/:term"
             element={<ProtectedRoute element={<Search />} />}
           />
-
+          <Route path="/add-news" element={<ProtectedRoute element={<AddNewsPage />} />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="*" element={<NotFound />} />
