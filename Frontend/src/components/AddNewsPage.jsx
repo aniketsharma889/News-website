@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 const AddNewsPage = () => {
   const navigate = useNavigate();
 
-  // State to store form values
   const [formData, setFormData] = useState({
     headline: '',
     desc: '',
@@ -15,11 +14,9 @@ const AddNewsPage = () => {
     author: '',
   });
 
-  // State for error handling and success message
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
-  // Handle form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -27,17 +24,13 @@ const AddNewsPage = () => {
       [name]: value,
     }));
   };
-
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // Sending a POST request to the backend to create news
       await axios.post('http://localhost:5000/api/addNews', formData);
       setSuccess('News added successfully!');
       setError('');
-      // Redirect to another page (e.g., homepage) after successful submission
       navigate('/');
     } catch (error) {
       setError(error.response?.data?.message || 'Something went wrong!');
@@ -52,7 +45,6 @@ const AddNewsPage = () => {
       {success && <div className="alert alert-success">{success}</div>}
       
       <form onSubmit={handleSubmit}>
-        {/* Headline */}
         <div className="mb-3">
           <label htmlFor="headline" className="form-label">Headline</label>
           <input
@@ -68,7 +60,6 @@ const AddNewsPage = () => {
           />
         </div>
 
-        {/* Description */}
         <div className="mb-3">
           <label htmlFor="desc" className="form-label">Description</label>
           <textarea
@@ -83,7 +74,6 @@ const AddNewsPage = () => {
           ></textarea>
         </div>
 
-        {/* Link */}
         <div className="mb-3">
           <label htmlFor="link" className="form-label">Link</label>
           <input
@@ -97,7 +87,6 @@ const AddNewsPage = () => {
           />
         </div>
 
-        {/* Image */}
         <div className="mb-3">
           <label htmlFor="image" className="form-label">Image URL</label>
           <input
@@ -111,7 +100,6 @@ const AddNewsPage = () => {
           />
         </div>
 
-        {/* Category */}
         <div className="mb-3">
           <label htmlFor="category" className="form-label">Category</label>
           <select
@@ -134,7 +122,6 @@ const AddNewsPage = () => {
           </select>
         </div>
 
-        {/* Author */}
         <div className="mb-3">
           <label htmlFor="author" className="form-label">Author (Optional)</label>
           <input
