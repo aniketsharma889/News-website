@@ -1,7 +1,6 @@
 ﻿# 📰 News Website
 
-A fully responsive web application for browsing, posting, and managing news articles. Built with the MERN stack, it provides a seamless user experience and secure backend functionality.
-
+A fully responsive web application built with the MERN stack, it provides a seamless user experience.
 ---
 
 ## 🌟 Features
@@ -146,7 +145,7 @@ npm install
 ```
 
 5. **Set up environment variables**:
-   - Create a `.env` file in the `backend` folder with the required keys (see above).
+   - Create a `.env` file in the `Backend` folder with the required keys (see above).
 
 ---
 
@@ -173,42 +172,10 @@ http://localhost:3000
 ```
 
 ---
+## 📚 Additional Resources
 
-## 🔁 Future Enhancements
-
-- Add comments and likes for news articles
-- Implement admin controls for better content moderation
-- Introduce real-time updates for news articles
-
----
-
-## 🤝 Contribution
-
-Contributions are welcome! Follow these steps:
-
-1. Fork the repository
-2. Create a new branch:
-
-```bash
-git checkout -b feature-branch-name
-```
-
-3. Commit your changes:
-
-```bash
-git commit -m "Add your message here"
-```
-
-4. Push to the branch:
-
-```bash
-git push origin feature-branch-name
-```
-
-5. Open a pull request
-
----
-
-## 📜 License
-
-This project is licensed under the [MIT License](LICENSE).
+- [MERN Stack Documentation](https://www.mongodb.com/mern-stack)
+- [React.js Documentation](https://reactjs.org/docs/getting-started.html)
+- [Node.js Documentation](https://nodejs.org/en/docs/)
+- [MongoDB Documentation](https://www.mongodb.com/docs/)
+- [Express.js Documentation](https://expressjs.com/en/starter/installing.html)
